@@ -10,4 +10,8 @@ public class ReflectTargetOrigin {
     public String publicMember = "public";
     protected String protectedMember = "protected";
     private String privateMember = "private";
+
+    public void test() {
+
+    }
 }
