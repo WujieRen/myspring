@@ -5,9 +5,9 @@ package demo.reflect;
  * @Date 2022/10/27
  * @Description
  */
-public class ReflectTarget {
+public class ReflectTarget extends ReflectTargetOrigin {
 
-    //---------构造函数-----------
+    /**************** 构造函数  *******************/
     //(默认的带参数构造函数)
     ReflectTarget(String str) {
         System.out.println("(默认)的构造方法 s = " + str);
@@ -37,7 +37,16 @@ public class ReflectTarget {
     }
 
 
-
+    /****************  字段  *******************/
+    public String name;
+    protected int index;
+    char type;
+    private String targetInfo;
+    @Override
+    public String toString(){
+        return "ReflectTarget [name=" + name + ", index=" + index + ", type=" + type
+                + ", targetInfo=" + targetInfo + "]";
+    }
 
 
     public static void main(String[] args) throws ClassNotFoundException {
