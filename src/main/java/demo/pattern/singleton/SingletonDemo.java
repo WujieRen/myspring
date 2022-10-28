@@ -7,9 +7,8 @@ import java.lang.reflect.InvocationTargetException;
  * @Author rwj
  * @Date 2022/10/28
  * @Description 单例模式：确保一个类只有一个实例，并对外提供统一的访问方式
- *
- *  单纯的饿汉模式和懒汉模式都不够安全，可以被反射 轻松绕过
- *
+ * <p>
+ * 单纯的饿汉模式和懒汉模式都不够安全，可以被反射 轻松绕过
  */
 public class SingletonDemo {
 
@@ -33,6 +32,14 @@ public class SingletonDemo {
         Constructor lCon = lClazz.getDeclaredConstructor();
         lCon.setAccessible(true);
         System.out.println(lCon.newInstance());
+
+        System.out.println("--------- 装备了枚举的饿汉单例模式，发现经过反射获取到的实例和根据实例方法获取到的是同一个对象 ---------");
+        Class clazz = EnumStarvingSingleton.class;
+        Constructor enumCon = clazz.getDeclaredConstructor();
+        enumCon.setAccessible(true);
+        EnumStarvingSingleton enumSingleTon = (EnumStarvingSingleton) enumCon.newInstance();
+        System.out.println(enumSingleTon.getInstance());
+        System.out.println(EnumStarvingSingleton.getInstance());
 
     }
 }
