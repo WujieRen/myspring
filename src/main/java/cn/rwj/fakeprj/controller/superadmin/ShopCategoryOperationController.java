@@ -3,6 +3,7 @@ package cn.rwj.fakeprj.controller.superadmin;
 import cn.rwj.fakeprj.entity.bo.ShopCategory;
 import cn.rwj.fakeprj.entity.dto.Result;
 import cn.rwj.fakeprj.service.solo.ShopCategoryService;
+import org.myspring.core.annotation.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import java.util.List;
  * @Date 2022/10/26
  * @Description
  */
+@Controller
 public class ShopCategoryOperationController {
 
     private ShopCategoryService shopCategoryService;

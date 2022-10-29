@@ -3,6 +3,7 @@ package cn.rwj.fakeprj.service.solo.impl;
 import cn.rwj.fakeprj.entity.bo.HeadLine;
 import cn.rwj.fakeprj.entity.dto.Result;
 import cn.rwj.fakeprj.service.solo.HeadLineService;
+import org.myspring.core.annotation.Service;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @Date 2022/10/26
  * @Description 头条
  */
+@Service
 public class HeadLineServiceImpl implements HeadLineService {
     @Override
     public Result<Boolean> addHeadLine(HeadLine headLine) {

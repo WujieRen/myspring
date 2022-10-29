@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Objects;
@@ -20,12 +22,31 @@ public class ClassUtil {
     public static final String FILE_PROTOCOL = "file";
 
     /**
+     * 实例化class
+     *
+     * @param clazz      Class
+     * @param <T>        class的类型
+     * @param accessible 是否支持创建出私有class对象的实例
+     * @return 类的实例化
+     */
+    public static <T> T newInstance(Class<?> clazz, boolean accessible) {
+        try {
+            Constructor constructor = clazz.getDeclaredConstructor();
+            constructor.setAccessible(accessible);
+            return (T) constructor.newInstance();
+        } catch (Exception e) {
+            log.error("newInstance error："+e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * 获取包下类集合
      * 1.这里为什么通过类加载器来加载指定路径下的资源（而不是让用户指定）？
-     *      1. 不够友好，不同机器路径可能不同，用户还得去找路径
-     *      2. 如果是打的jar包或者war包，很难找到路径
+     * 1. 不够友好，不同机器路径可能不同，用户还得去找路径
+     * 2. 如果是打的jar包或者war包，很难找到路径
      * 2.类加载器可以定位资源URL
-     *      classLoader.getResource(The name of a resource is a '/'-separated path name that identifies the resource)
+     * classLoader.getResource(The name of a resource is a '/'-separated path name that identifies the resource)
      *
      * @return 类集合
      * @parampackageName包名
@@ -59,22 +80,23 @@ public class ClassUtil {
      */
     private static void extractClassFile(Set<Class<?>> emptyClassSet, File fileSource, String packageName) {
         //1. 如果是文件，结束递归
-        if(fileSource.isFile()) return;
+        if (fileSource.isFile()) return;
 
         //2.过滤出文件夹类型的资源，进行递归处理
         File[] files = fileSource.listFiles(new FileFilter() {
             @Override
             public boolean accept(File file) {
-                if(file.isDirectory()) {    //如果是目录，递归处理
+                if (file.isDirectory()) {    //如果是目录，递归处理
                     return true;
                 } else {    //如果是文件，加载以.class结尾的字节码文件为Class对象并加入 classSet 集合
                     String absolutePath = file.getAbsolutePath();
-                    if(absolutePath.endsWith(".class")) {
+                    if (absolutePath.endsWith(".class")) {
                         addToClassSet(absolutePath);
                     }
                 }
                 return false;
             }
+
             private void addToClassSet(String absolutePath) {
                 absolutePath = absolutePath.replace(File.separator, ".");
                 String className = absolutePath.substring(absolutePath.indexOf(packageName), absolutePath.lastIndexOf("."));
@@ -84,7 +106,7 @@ public class ClassUtil {
         });
 
         //3. 递归处理文件夹
-        if(files != null) {
+        if (files != null) {
             for (File file : files) {
                 extractClassFile(emptyClassSet, file, packageName);
             }

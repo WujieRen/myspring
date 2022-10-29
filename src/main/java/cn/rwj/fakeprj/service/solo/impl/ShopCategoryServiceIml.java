@@ -3,6 +3,7 @@ package cn.rwj.fakeprj.service.solo.impl;
 import cn.rwj.fakeprj.entity.bo.ShopCategory;
 import cn.rwj.fakeprj.entity.dto.Result;
 import cn.rwj.fakeprj.service.solo.ShopCategoryService;
+import org.myspring.core.annotation.Service;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @Date 2022/10/26
  * @Description 店铺类别
  */
+@Service
 public class ShopCategoryServiceIml implements ShopCategoryService {
     @Override
     public Result<Boolean> addShopCategory(ShopCategory shopCategory) {

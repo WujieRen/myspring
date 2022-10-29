@@ -7,6 +7,7 @@ import cn.rwj.fakeprj.entity.dto.Result;
 import cn.rwj.fakeprj.service.combine.HeadLineShopCategoryCombineService;
 import cn.rwj.fakeprj.service.solo.HeadLineService;
 import cn.rwj.fakeprj.service.solo.ShopCategoryService;
+import org.myspring.core.annotation.Service;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @Date 2022/10/26
  * @Description 组合两个solo Service，处理获取首页需要数据的数据的逻辑
  */
+@Service
 public class HeadLineShopCategoryCombineServiceImpl implements HeadLineShopCategoryCombineService {
 
     private HeadLineService headLineService;
