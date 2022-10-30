@@ -8,6 +8,7 @@ import cn.rwj.fakeprj.service.combine.HeadLineShopCategoryCombineService;
 import cn.rwj.fakeprj.service.solo.HeadLineService;
 import cn.rwj.fakeprj.service.solo.ShopCategoryService;
 import org.myspring.core.annotation.Service;
+import org.myspring.inject.annotation.Autowired;
 
 import java.util.List;
 
@@ -19,7 +20,9 @@ import java.util.List;
 @Service
 public class HeadLineShopCategoryCombineServiceImpl implements HeadLineShopCategoryCombineService {
 
+    @Autowired
     private HeadLineService headLineService;
+    @Autowired
     private ShopCategoryService shopCategoryService;
 
     @Override

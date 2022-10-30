@@ -4,6 +4,7 @@ import cn.rwj.fakeprj.entity.bo.HeadLine;
 import cn.rwj.fakeprj.entity.dto.Result;
 import cn.rwj.fakeprj.service.solo.HeadLineService;
 import org.myspring.core.annotation.Controller;
+import org.myspring.inject.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import java.util.List;
 @Controller
 public class HeadLineOperationController {
 
+    @Autowired
     private HeadLineService headLineService;
 
     public Result<Boolean> addHeadLine(HttpServletRequest req, HttpServletResponse resp) {

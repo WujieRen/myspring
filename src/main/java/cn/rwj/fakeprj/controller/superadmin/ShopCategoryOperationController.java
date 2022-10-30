@@ -4,6 +4,7 @@ import cn.rwj.fakeprj.entity.bo.ShopCategory;
 import cn.rwj.fakeprj.entity.dto.Result;
 import cn.rwj.fakeprj.service.solo.ShopCategoryService;
 import org.myspring.core.annotation.Controller;
+import org.myspring.inject.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import java.util.List;
 @Controller
 public class ShopCategoryOperationController {
 
+    @Autowired
     private ShopCategoryService shopCategoryService;
 
     public Result<Boolean> addShopCategory(HttpServletRequest req, HttpServletResponse resp){
