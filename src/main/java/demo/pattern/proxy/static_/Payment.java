@@ -1,4 +1,4 @@
-package demo.proxy.static_;
+package demo.pattern.proxy.static_;
 
 /**
  * @Author rwj

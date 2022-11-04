@@ -1,21 +1,22 @@
-package demo.proxy.static_;
+package demo.pattern.proxy.static_;
 
 /**
  * @Author rwj
  * @Date 2022/11/5
  * @Description
  */
-public class AlipayToC implements Payment {
-    private ToCpaymentImpl aliToCPayment;
+public class AlipayToB implements Payment{
 
-    public AlipayToC(ToCpaymentImpl aliToCPayment) {
-        this.aliToCPayment = aliToCPayment;
+    private ToBPaymentImpl toBPayment;
+
+    public AlipayToB(ToBPaymentImpl toBPayment) {
+        this.toBPayment = toBPayment;
     }
 
     @Override
     public void pay() {
         before();
-        aliToCPayment.pay();
+        toBPayment.pay();
         after();
     }
 
@@ -26,4 +27,5 @@ public class AlipayToC implements Payment {
     private void after() {
         System.out.println("支付-----");
     }
+
 }
