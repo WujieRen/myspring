@@ -1,10 +1,10 @@
-package org.myspring.aopj;
+package org.myspring.aop.aspectj;
 
 import org.myspring.aop.ProxyCreator;
-import org.myspring.aop.annotation.Order;
-import org.myspring.aop.aspect.DefaultAspect;
-import org.myspring.aopj.annotation.AspectJ;
-import org.myspring.aopj.aspect.AspectJInfo;
+import org.myspring.aop.native_.annotation.Order;
+import org.myspring.aop.native_.aspect.DefaultAspect;
+import org.myspring.aop.aspectj.annotation.AspectJ;
+import org.myspring.aop.aspectj.aspect.AspectJInfo;
 import org.myspring.core.BeanContainer;
 import org.myspring.util.ValidationUtil;
 

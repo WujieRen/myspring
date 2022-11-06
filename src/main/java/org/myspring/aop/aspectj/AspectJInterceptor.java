@@ -1,13 +1,12 @@
-package org.myspring.aopj;
+package org.myspring.aop.aspectj;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import org.myspring.aopj.aspect.AspectJInfo;
+import org.myspring.aop.aspectj.aspect.AspectJInfo;
 import org.myspring.util.ValidationUtil;
 
 import java.lang.reflect.Method;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 /**

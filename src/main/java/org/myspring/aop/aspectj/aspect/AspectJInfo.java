@@ -1,9 +1,9 @@
-package org.myspring.aopj.aspect;
+package org.myspring.aop.aspectj.aspect;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.myspring.aop.aspect.DefaultAspect;
-import org.myspring.aopj.PointcutLocator;
+import org.myspring.aop.native_.aspect.DefaultAspect;
+import org.myspring.aop.aspectj.PointcutLocator;
 
 /**
  * @Author rwj

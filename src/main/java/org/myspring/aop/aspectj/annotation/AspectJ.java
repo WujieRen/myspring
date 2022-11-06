@@ -1,4 +1,4 @@
-package org.myspring.aopj.annotation;
+package org.myspring.aop.aspectj.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,9 +1,10 @@
-package org.myspring.aop;
+package org.myspring.aop.native_;
 
-import org.myspring.aop.annotation.Aspect;
-import org.myspring.aop.annotation.Order;
-import org.myspring.aop.aspect.AspectInfo;
-import org.myspring.aop.aspect.DefaultAspect;
+import org.myspring.aop.ProxyCreator;
+import org.myspring.aop.native_.annotation.Aspect;
+import org.myspring.aop.native_.annotation.Order;
+import org.myspring.aop.native_.aspect.AspectInfo;
+import org.myspring.aop.native_.aspect.DefaultAspect;
 import org.myspring.core.BeanContainer;
 import org.myspring.util.ValidationUtil;
 
@@ -71,7 +72,7 @@ public class AspectWeaver {
         // 1. 获取被代理类的集合
         Set<Class<?>> classSet = beanContainer.getClassesByAnnotation(category);
         // 2. 遍历被代理类
-        for(Class targetClass : classSet) {
+        for(Class<?> targetClass : classSet) {
             // 创建实例
             AspectInterceptor aspectInterceptor = new AspectInterceptor(targetClass, aspectInfoList);
             Object proxyBean = ProxyCreator.createProxy(targetClass, aspectInterceptor);

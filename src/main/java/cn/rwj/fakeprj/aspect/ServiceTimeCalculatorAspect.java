@@ -1,11 +1,9 @@
 package cn.rwj.fakeprj.aspect;
 
 import lombok.extern.slf4j.Slf4j;
-import org.myspring.aop.annotation.Aspect;
-import org.myspring.aop.annotation.Order;
-import org.myspring.aop.aspect.DefaultAspect;
-import org.myspring.aopj.annotation.AspectJ;
-import org.myspring.core.annotation.Service;
+import org.myspring.aop.native_.annotation.Order;
+import org.myspring.aop.native_.aspect.DefaultAspect;
+import org.myspring.aop.aspectj.annotation.AspectJ;
 
 import java.lang.reflect.Method;
 

@@ -1,4 +1,4 @@
-package org.myspring.aop.aspect;
+package org.myspring.aop.native_.aspect;
 
 import java.lang.reflect.Method;
 

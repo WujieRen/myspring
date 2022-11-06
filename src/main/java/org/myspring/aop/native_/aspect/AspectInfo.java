@@ -1,4 +1,4 @@
-package org.myspring.aop.aspect;
+package org.myspring.aop.native_.aspect;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,5 +12,5 @@ import lombok.Getter;
 @Getter
 public class AspectInfo {
     private int order;
-    private DefaultAspect aspect;
+    private org.myspring.aop.native_.aspect.DefaultAspect aspect;
 }

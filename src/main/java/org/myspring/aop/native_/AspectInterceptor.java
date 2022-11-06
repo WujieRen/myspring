@@ -1,8 +1,8 @@
-package org.myspring.aop;
+package org.myspring.aop.native_;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import org.myspring.aop.aspect.AspectInfo;
+import org.myspring.aop.native_.aspect.AspectInfo;
 import org.myspring.util.ValidationUtil;
 
 import java.lang.reflect.Method;

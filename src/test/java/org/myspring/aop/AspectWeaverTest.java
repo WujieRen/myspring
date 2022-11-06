@@ -1,10 +1,9 @@
 package org.myspring.aop;
 
 import cn.rwj.fakeprj.controller.frontend.MainPageController;
-import cn.rwj.fakeprj.controller.superadmin.HeadLineOperationController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.myspring.aopj.AspectJWeaver;
+import org.myspring.aop.aspectj.AspectJWeaver;
 import org.myspring.core.BeanContainer;
 import org.myspring.inject.DependencyInjector;
 

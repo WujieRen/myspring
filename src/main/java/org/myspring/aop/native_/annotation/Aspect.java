@@ -1,4 +1,4 @@
-package org.myspring.aop.annotation;
+package org.myspring.aop.native_.annotation;
 
 import java.lang.annotation.*;
 
