@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  */
 @Slf4j
 //@Aspect(Service.class)
-@AspectJ(pointcut = "within(org.myspring.core.annotation.Component")
+@AspectJ(pointcut = "within(org.myspring.core.annotation.Component)")
 @Order(0)
 public class ServiceTimeCalculatorAspect extends DefaultAspect {
     private long timestampCache;
