@@ -16,6 +16,9 @@ import java.util.List;
 public class HeadLineServiceImpl implements HeadLineService {
     @Override
     public Result<Boolean> addHeadLine(HeadLine headLine) {
+        System.out.println("------   Service   -------");
+        System.out.println("HeadLineServiceImpl.addHeadLine");
+        System.out.println("------   Service   -------");
         return null;
     }
 

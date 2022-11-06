@@ -22,6 +22,7 @@ public class HeadLineOperationController {
     private HeadLineService headLineService;
 
     public Result<Boolean> addHeadLine(HttpServletRequest req, HttpServletResponse resp) {
+        System.out.println("HeadLineOperationController.addHeadLine");
         //TODO:参数校验以及请求参数转化
         return headLineService.addHeadLine(new HeadLine());
     }
