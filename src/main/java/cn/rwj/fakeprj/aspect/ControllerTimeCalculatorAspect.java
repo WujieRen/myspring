@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.myspring.aop.annotation.Aspect;
 import org.myspring.aop.annotation.Order;
 import org.myspring.aop.aspect.DefaultAspect;
+import org.myspring.aopj.annotation.AspectJ;
 import org.myspring.core.annotation.Controller;
 
 import java.lang.reflect.Method;
@@ -14,7 +15,8 @@ import java.lang.reflect.Method;
  * @Description
  */
 @Slf4j
-@Aspect(Controller.class)
+//@Aspect(Controller.class)
+@AspectJ(pointcut = "execution(* cn.rwj.fakeprj.controller.frontend..*.*(..))")
 @Order(1)
 public class ControllerTimeCalculatorAspect extends DefaultAspect {
     private long timestampCache;

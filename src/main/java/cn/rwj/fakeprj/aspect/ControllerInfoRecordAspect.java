@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.myspring.aop.annotation.Aspect;
 import org.myspring.aop.annotation.Order;
 import org.myspring.aop.aspect.DefaultAspect;
+import org.myspring.aopj.annotation.AspectJ;
 import org.myspring.core.annotation.Controller;
 
 import java.lang.reflect.Method;
@@ -14,7 +15,8 @@ import java.lang.reflect.Method;
  * @Description
  */
 @Slf4j
-@Aspect(Controller.class)
+//@Aspect(Controller.class)
+@AspectJ(pointcut = "within(cn.rwj.fakeprj.controller.superadmin.*)")
 @Order(2)
 public class ControllerInfoRecordAspect extends DefaultAspect {
     @Override

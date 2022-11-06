@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.myspring.aop.annotation.Aspect;
 import org.myspring.aop.annotation.Order;
 import org.myspring.aop.aspect.DefaultAspect;
+import org.myspring.aopj.annotation.AspectJ;
 import org.myspring.core.annotation.Service;
 
 import java.lang.reflect.Method;
@@ -14,7 +15,8 @@ import java.lang.reflect.Method;
  * @Description
  */
 @Slf4j
-@Aspect(Service.class)
+//@Aspect(Service.class)
+@AspectJ(pointcut = "within(org.myspring.core.annotation.Component")
 @Order(0)
 public class ServiceTimeCalculatorAspect extends DefaultAspect {
     private long timestampCache;

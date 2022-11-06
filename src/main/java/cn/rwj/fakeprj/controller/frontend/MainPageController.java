@@ -27,6 +27,7 @@ public class MainPageController {
 //    private TestNoImplementClassService testNoImplementClassService;
 
     public Result<MainPageInfoDTO> getMainPageInfo(HttpServletRequest req, HttpServletResponse resp){
+        System.out.println("MainPageController.getMainPageInfo");
         return headLineShopCategoryCombineService.getMainPageInfo();
     }
 
