@@ -1,6 +1,6 @@
 package org.myspring.core;
 
-import cn.rwj.fakeprj.controller.DipatcherServlet;
+import org.myspring.mvc.DipatcherServlet;
 import cn.rwj.fakeprj.controller.frontend.MainPageController;
 import cn.rwj.fakeprj.service.solo.HeadLineService;
 import cn.rwj.fakeprj.service.solo.impl.HeadLineServiceImpl;
