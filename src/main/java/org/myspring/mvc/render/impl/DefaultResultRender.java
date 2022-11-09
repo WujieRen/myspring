@@ -11,6 +11,6 @@ import org.myspring.mvc.render.ResultRender;
 public class DefaultResultRender implements ResultRender {
     @Override
     public void render(RequestProcessorChain requestProcessorChain) {
-
+        requestProcessorChain.getResponse().setStatus(requestProcessorChain.getResponseCode());
     }
 }

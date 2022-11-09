@@ -1,5 +1,16 @@
 package org.myspring.mvc;
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.myspring.mvc.processor.RequestProcessor;
+import org.myspring.mvc.render.ResultRender;
+import org.myspring.mvc.render.impl.DefaultResultRender;
+import org.myspring.mvc.render.impl.InternalErrorResultRender;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Iterator;
+
 /**
  * @Author rwj
  * @Date 2022/11/9
@@ -14,6 +25,54 @@ package org.myspring.mvc;
  *      2.调用渲染器的render方法对结果进行渲染
  *
  */
+@Slf4j
+@Data
 public class RequestProcessorChain {
 
+    private Iterator<RequestProcessor> iterator;
+    private HttpServletRequest request;
+    private HttpServletResponse response;
+    private String requestPath;
+    private String requestMethod;
+    private  int responseCode;
+    private ResultRender resultRender;
+
+    public RequestProcessorChain(Iterator<RequestProcessor> iterator, HttpServletRequest req, HttpServletResponse resp) {
+        this.iterator = iterator;
+        this.request = req;
+        this.response = resp;
+        this.requestPath = req.getPathInfo();
+        this.requestMethod = req.getMethod();
+        this.responseCode =HttpServletResponse.SC_OK;
+    }
+
+    public void doRequestProcessorChain() {
+        try {
+            //1.遍历注册的请求处理器列表
+            while (iterator.hasNext()) {
+                //1.直到某个请求处理器返回 false 为止
+                if(!iterator.next().process(this)) {
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            //2.期间如果出现异常，则交由内部错误渲染器处理
+            this.resultRender = new InternalErrorResultRender(e.getMessage());
+            log.error("doRequestProcessorChain error:", e);
+        }
+    }
+
+    public void doRender() {
+        //1.如果请求处理器实现类均未选择合适的渲染器，则使用默认的
+        if(this.resultRender == null){
+            this.resultRender = new DefaultResultRender();
+        }
+        //2.调用渲染器的render方法对结果进行渲染
+        try {
+            this.resultRender.render(this); /** */
+        } catch (Exception e) {
+            log.error("doRender error: ", e);
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -8,5 +8,5 @@ import org.myspring.mvc.RequestProcessorChain;
  * @Description 请求处理器
  */
 public interface RequestProcessor {
-    boolean process(RequestProcessorChain requestProcessorChain);
+    boolean process(RequestProcessorChain requestProcessorChain) throws Exception;
 }

@@ -8,5 +8,5 @@ import org.myspring.mvc.RequestProcessorChain;
  * @Description 结果渲染器
  */
 public interface ResultRender {
-    void render(RequestProcessorChain requestProcessorChain);
+    void render(RequestProcessorChain requestProcessorChain) throws Exception;
 }
