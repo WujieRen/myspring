@@ -19,7 +19,13 @@ public class HeadLineServiceImpl implements HeadLineService {
         System.out.println("------   Service   -------");
         System.out.println("HeadLineServiceImpl.addHeadLine");
         System.out.println("------   Service   -------");
-        return null;
+
+        Result<Boolean> result = new Result<Boolean>();
+        result.setCode(200);
+        result.setMsg("请求成功");
+        result.setData(true);
+
+        return result;
     }
 
     @Override

@@ -188,7 +188,7 @@ public class ControllerRequestProcessor implements RequestProcessor {
             if(methodParams.size() == 0) {
                 result = invokeMethod.invoke(controller);
             } else {
-                result = invokeMethod.invoke(controller, methodParams);
+                result = invokeMethod.invoke(controller, methodParams.toArray());   // 这里注意参数要转成数组，不然会把 methodParams 当成一个参数处理，会报异常： Wrong number of args
             }
         } catch (IllegalAccessException e) {
             //参数异常

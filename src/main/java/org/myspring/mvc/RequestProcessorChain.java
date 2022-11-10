@@ -24,6 +24,10 @@ import java.util.Iterator;
  *      1.如果请求处理器实现类均未选择合适的渲染器，则使用默认的
  *      2.调用渲染器的render方法对结果进行渲染
  *
+ * RequestProcessorChain 串联起了 DispatcherServlet 与 ( RequestProcessor 和  ResultRender )
+ *  通过构造函数接收 DispatcherServlet 以及需要初始化的各种实体信息（包括输入 与 输出），在构造函数中将他们初始化
+ *  然后在通过将自身 this 以将自身初始化好的各种属性传递给 RequestProcessor(输入信息处理逻辑) 和 ResultRender（输出信息逻辑）
+ *
  */
 @Slf4j
 @Data
@@ -51,14 +55,14 @@ public class RequestProcessorChain {
             //1.遍历注册的请求处理器列表
             while (iterator.hasNext()) {
                 //1.直到某个请求处理器返回 false 为止
-                if(!iterator.next().process(this)) {
+                if(!iterator.next().process(this)) {    /** */
                     break;
                 }
             }
         } catch (Exception e) {
             //2.期间如果出现异常，则交由内部错误渲染器处理
             this.resultRender = new InternalErrorResultRender(e.getMessage());
-            log.error("doRequestProcessorChain error:", e);
+            log.error("内部异常渲染器 -- doRequestProcessorChain error:", e);
         }
     }
 
@@ -69,7 +73,7 @@ public class RequestProcessorChain {
         }
         //2.调用渲染器的render方法对结果进行渲染
         try {
-            this.resultRender.render(this); /** */
+            this.resultRender.render(this); /**  */
         } catch (Exception e) {
             log.error("doRender error: ", e);
             throw new RuntimeException(e);
