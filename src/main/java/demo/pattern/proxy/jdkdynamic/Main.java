@@ -25,16 +25,18 @@ public class Main {
 //        toCpayment.pay();     生成的代理对象无法访问到被代理对象的方法
         /**
          * 即使给一个共同的父类，让目標方法可以被代理对象访问，也会因为生成的代理对象无法转换为 被代理对象的父类（不同类） 而报错  ClassCastException，案例见： {@link TestForceConvertion}
+         *
+         * 其实返回的是一个丢失了部分子类信息的 Object 对象，然后 Object 强转为 TestPayment 时因为是向下转型，这时类型已经不兼容，所以就会报错 ClassCaseException
          */
         TestPayment toCpayment = JdkDynamicProxyUtil.newProxyInstance(payment, tocHandler);
         toCpayment.pay();
 
 //        System.out.println(toCpayment.getClass().getSimpleName());
-        /*toCpayment.pay();
+//        toCpayment.pay();
 
-        System.out.println("\n");
+//        System.out.println("\n");
 
-        Payment payment1 = new ToBPaymentImpl();
+        /*Payment payment1 = new ToBPaymentImpl();
         InvocationHandler toBHandler = new AlipayInvocationHandler(payment1);
         Payment toBPayment = JdkDynamicProxyUtil.newProxyInstance(payment1, toBHandler);
         toBPayment.pay();*/

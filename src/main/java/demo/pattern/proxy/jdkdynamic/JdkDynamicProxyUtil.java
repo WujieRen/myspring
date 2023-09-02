@@ -1,6 +1,7 @@
 package demo.pattern.proxy.jdkdynamic;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
@@ -17,6 +18,11 @@ public class JdkDynamicProxyUtil {
         Class<?>[] interfaces = objectProxied.getClass().getInterfaces();
         // 代理类的类加载器、代理类实现的接口列表、该代理类的invvocatoin handler
         // 该方法返回的是最终生成的代理类实例
-        return (T) Proxy.newProxyInstance(classLoader, interfaces, handler);
+        Object o = Proxy.newProxyInstance(classLoader, interfaces, handler);
+        Method[] declaredMethods = o.getClass().getDeclaredMethods();
+        for (Method declaredMethod : declaredMethods) {
+            System.out.println(declaredMethod.getName());
+        }
+        return (T) o;
     }
 }
